@@ -1,0 +1,38 @@
+# This .gitignore is optimized for Unity projects
+
+# Ignore the Library and Temp folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+
+# Ignore Visual Studio / JetBrains files
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Ignore generated or cache files
+*.pidb.meta
+*.pdb
+*.mdb
+sysinfo.txt
+
+# Ignore crash reports and auto-saves
+*.stackdump
+*.autosave
+
+# Ignore Burst generated files
+[Bb]urst/
+
+# Ignore Unity's PackageCache
+Library/PackageCache/
