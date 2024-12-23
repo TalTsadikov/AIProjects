@@ -8,11 +8,11 @@ public class GridSystem : MonoBehaviour
     public Vector3 gridWorldSize;
     public float nodeRadius;
     public LayerMask unwalkableMask;
-    public int gridHeight = 3; // Number of vertical layers
+    public int gridHeight = 3; 
 
-    NodeGrid[,,] grid;
-    float nodeDiameter;
-    int gridSizeX, gridSizeY, gridSizeZ;
+    private NodeGrid[,,] grid;
+    private float nodeDiameter;
+    private int gridSizeX, gridSizeY, gridSizeZ;
 
     void Awake()
     {
@@ -44,18 +44,23 @@ public class GridSystem : MonoBehaviour
 
     public NodeGrid NodeFromWorldPoint(Vector3 worldPosition)
     {
-        float percentX = (worldPosition.x + gridWorldSize.x / 2) / gridWorldSize.x;
-        float percentY = (worldPosition.z + gridWorldSize.y / 2) / gridWorldSize.y;
-        float percentZ = (worldPosition.y + gridWorldSize.z / 2) / gridWorldSize.z;
+        float percentX = (worldPosition.x - (transform.position.x - gridWorldSize.x / 2)) / gridWorldSize.x;
+        float percentY = (worldPosition.z - (transform.position.z - gridWorldSize.y / 2)) / gridWorldSize.y;
+        float percentZ = (worldPosition.y - (transform.position.y - gridWorldSize.z / 2)) / gridWorldSize.z;
+
         percentX = Mathf.Clamp01(percentX);
         percentY = Mathf.Clamp01(percentY);
         percentZ = Mathf.Clamp01(percentZ);
 
-        int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
-        int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
-        int z = Mathf.RoundToInt((gridSizeZ - 1) * percentZ);
+        int x = Mathf.FloorToInt((gridSizeX - 1) * percentX);
+        int y = Mathf.FloorToInt((gridSizeY - 1) * percentY);
+        int z = Mathf.FloorToInt((gridSizeZ - 1) * percentZ);
+
+        Debug.Log($"World Position: {worldPosition}, Translated Grid Indices: ({x}, {y}, {z})");
+
         return grid[x, y, z];
     }
+
 
     public List<NodeGrid> GetNeighbors(NodeGrid node)
     {
@@ -126,4 +131,3 @@ public class NodeGrid
         get { return gCost + hCost; }
     }
 }
-

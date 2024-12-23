@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static GridSystem;
 
 public class PathFinding : MonoBehaviour
 {
-
-    private GridSystem grid;
-    private List<Vector3> currentPath;
+    private GridSystem grid; 
+    private List<Vector3> currentPath; 
 
     void Awake()
     {
@@ -19,6 +17,15 @@ public class PathFinding : MonoBehaviour
         NodeGrid startNode = grid.NodeFromWorldPoint(startPos);
         NodeGrid targetNode = grid.NodeFromWorldPoint(targetPos);
 
+        Debug.Log($"Start Node: World Position {startNode.worldPosition}, Grid ({startNode.gridX}, {startNode.gridY}, {startNode.gridZ}), Walkable: {startNode.walkable}");
+        Debug.Log($"Target Node: World Position {targetNode.worldPosition}, Grid ({targetNode.gridX}, {targetNode.gridY}, {targetNode.gridZ}), Walkable: {targetNode.walkable}");
+
+        if (!startNode.walkable || !targetNode.walkable)
+        {
+            Debug.LogWarning("Start or target node is not walkable!");
+            return null;
+        }
+
         List<NodeGrid> openSet = new List<NodeGrid>();
         HashSet<NodeGrid> closedSet = new HashSet<NodeGrid>();
         openSet.Add(startNode);
@@ -28,7 +35,7 @@ public class PathFinding : MonoBehaviour
             NodeGrid currentNode = openSet[0];
             for (int i = 1; i < openSet.Count; i++)
             {
-                if (openSet[i].fCost < currentNode.fCost || openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost)
+                if (openSet[i].fCost < currentNode.fCost || (openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost))
                 {
                     currentNode = openSet[i];
                 }
@@ -39,8 +46,7 @@ public class PathFinding : MonoBehaviour
 
             if (currentNode == targetNode)
             {
-                currentPath = RetracePath(startNode, targetNode);
-                return currentPath;
+                return RetracePath(startNode, targetNode);
             }
 
             foreach (NodeGrid neighbor in grid.GetNeighbors(currentNode))
@@ -58,15 +64,19 @@ public class PathFinding : MonoBehaviour
                     neighbor.parent = currentNode;
 
                     if (!openSet.Contains(neighbor))
+                    {
                         openSet.Add(neighbor);
+                    }
                 }
             }
         }
 
+        Debug.LogWarning("Path not found!");
         return null;
     }
 
-    List<Vector3> RetracePath(NodeGrid startNode, NodeGrid endNode)
+
+    private List<Vector3> RetracePath(NodeGrid startNode, NodeGrid endNode)
     {
         List<Vector3> path = new List<Vector3>();
         NodeGrid currentNode = endNode;
@@ -77,28 +87,41 @@ public class PathFinding : MonoBehaviour
             currentNode = currentNode.parent;
         }
         path.Reverse();
+        currentPath = path;
+
+        Debug.Log($"Retraced Path: {string.Join(" -> ", path)}");
 
         return path;
     }
 
-    int GetDistance(NodeGrid nodeA, NodeGrid nodeB)
+    private int GetDistance(NodeGrid nodeA, NodeGrid nodeB)
     {
-        int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
-        int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
-        int dstZ = Mathf.Abs(nodeA.gridZ - nodeB.gridZ);
+        int distX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
+        int distY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+        int distZ = Mathf.Abs(nodeA.gridZ - nodeB.gridZ);
 
-        int remaining = Mathf.Abs(dstX - dstY);
-        return 14 * Mathf.Min(dstX, dstY) + 10 * remaining + 10 * dstZ;
+        if (distX > distY && distX > distZ)
+        {
+            return 14 * Mathf.Min(distY, distZ) + 10 * (distX - Mathf.Min(distY, distZ));
+        }
+        else if (distY > distX && distY > distZ)
+        {
+            return 14 * Mathf.Min(distX, distZ) + 10 * (distY - Mathf.Min(distX, distZ));
+        }
+        else
+        {
+            return 14 * Mathf.Min(distX, distY) + 10 * (distZ - Mathf.Min(distX, distY));
+        }
     }
 
     void OnDrawGizmos()
     {
         if (currentPath != null)
         {
-            Gizmos.color = Color.green;
-            for (int i = 0; i < currentPath.Count - 1; i++)
+            Gizmos.color = Color.cyan;
+            foreach (Vector3 point in currentPath)
             {
-                Gizmos.DrawLine(currentPath[i], currentPath[i + 1]);
+                Gizmos.DrawSphere(point, 0.2f);
             }
         }
     }

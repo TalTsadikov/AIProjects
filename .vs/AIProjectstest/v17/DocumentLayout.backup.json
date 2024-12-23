@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\unity projects\\AIProjectstest\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw2script\\agent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw2script\\agent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw2script\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw2script\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw2script\\gridsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw2script\\gridsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw2script\\pathfollower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw2script\\pathfollower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|c:\\unity projects\\aiprojectstest\\assets\\script\\hw2script\\pathfinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw2script\\pathfinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PathFinding.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\PathFinding.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW2Script\\PathFinding.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\PathFinding.cs",
+              "RelativeToolTip": "Assets\\Script\\HW2Script\\PathFinding.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-18T12:38:47.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PathFollower.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\PathFollower.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW2Script\\PathFollower.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\PathFollower.cs",
+              "RelativeToolTip": "Assets\\Script\\HW2Script\\PathFollower.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T14:19:22.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GridSystem.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\GridSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW2Script\\GridSystem.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\GridSystem.cs",
+              "RelativeToolTip": "Assets\\Script\\HW2Script\\GridSystem.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAmwDoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T14:19:20.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AIController.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\AIController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW2Script\\AIController.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\AIController.cs",
+              "RelativeToolTip": "Assets\\Script\\HW2Script\\AIController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T14:19:17.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Agent.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\Agent.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW2Script\\Agent.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\Agent.cs",
+              "RelativeToolTip": "Assets\\Script\\HW2Script\\Agent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T14:18:11.964Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

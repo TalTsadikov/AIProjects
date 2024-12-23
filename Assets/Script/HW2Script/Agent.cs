@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Agent : MonoBehaviour
 {
-
     public float speed = 5f;
     public float acceleration = 2f;
     public float turningRadius = 1f;
