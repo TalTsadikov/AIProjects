@@ -15,7 +15,7 @@ public class DragonController : MonoBehaviour
 
     private Rigidbody rb;
     private List<NeuralNetwork> topNetworks = new List<NeuralNetwork>();  // To store top 10 networks
-
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -81,6 +81,7 @@ public class DragonController : MonoBehaviour
     private void HandleObstacleAvoidance()
     {
         RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.forward, Color.blue);
         if (Physics.Raycast(transform.position, transform.forward, out hit, obstacleAvoidanceDistance))
         {
             // If obstacle detected, steer around it

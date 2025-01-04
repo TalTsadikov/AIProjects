@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CharacterParameters : MonoBehaviour
+public class CharacterParameters
 {
-
-    public float healthWeight;
-    public float enemyDistanceWeight;
+    public float dangerThreshold;
+    public float safeThreshold;
     public float decisionThreshold;
+    public float fitness;
 }

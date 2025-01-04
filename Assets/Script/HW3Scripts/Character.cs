@@ -1,31 +1,29 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
+    public float MaxHealth = 100f;
+    public float Health;
+    public bool IsAlive => Health > 0;
 
-    public float health = 100f;
-    public float maxHealth = 100f;
-    public float moveSpeed = 5f;
-
-    public void TakeDamage(float amount)
+    private void Start()
     {
-        health -= amount;
-        health = Mathf.Clamp(health, 0, maxHealth);
+        Health = MaxHealth;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        Health -= damage;
+        if (Health <= 0)
+        {
+            Health = 0;
+            Destroy(gameObject);
+        }
     }
 
     public void Heal(float amount)
     {
-        health += amount;
-        health = Mathf.Clamp(health, 0, maxHealth);
-    }
-
-    public bool IsAlive()
-    {
-        return health > 0;
+        Health += amount;
+        if (Health > MaxHealth) Health = MaxHealth;
     }
 }

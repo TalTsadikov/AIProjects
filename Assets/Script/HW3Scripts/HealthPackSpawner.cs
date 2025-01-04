@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthPackSpawner : MonoBehaviour
 {
     public GameObject healthPackPrefab;
-    public Transform[] spawnPoints;
-    public float spawnInterval = 10f;
+    public Vector3 spawnAreaSize;
+    public float spawnInterval = 5f;
 
     private void Start()
     {
@@ -15,7 +13,11 @@ public class HealthPackSpawner : MonoBehaviour
 
     private void SpawnHealthPack()
     {
-        int spawnIndex = Random.Range(0, spawnPoints.Length);
-        Instantiate(healthPackPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
+        Vector3 randomPosition = new Vector3(
+            Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2),
+            0,
+            Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2));
+
+        Instantiate(healthPackPrefab, randomPosition, Quaternion.identity);
     }
 }

@@ -59,7 +59,7 @@ public class Movement : MonoBehaviour
             Quaternion shootRotation = Quaternion.LookRotation(shootDirection);
             GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, shootRotation);
             Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
-            projectileRb.velocity = shootDirection * projectile.GetComponent<Projectile>().speed;
+            projectileRb.velocity = shootDirection * projectile.GetComponent<ProjectileHW3>().speed;
         }
     }
 }

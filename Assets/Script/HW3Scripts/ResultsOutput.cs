@@ -1,25 +1,37 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ResultsOutput : MonoBehaviour
 {
+    private List<Character> characters;
+    private FitnessFunction fitnessFunction;
 
-    public TMP_Text resultText;
-
-    public void LogGenerationResults(int generation, List<GameObject> population)
+    private void Start()
     {
-        string result = $"Generation {generation + 1} Results:\n";
-        foreach (GameObject agent in population)
-        {
-            Character character = agent.GetComponent<Character>();
-            result += $"Health: {character.health}, Health Threshold: {agent.GetComponent<FuzzyLogic>().healthThreshold}\n";
-        }
+        fitnessFunction = GetComponent<FitnessFunction>();
+        RefreshCharacters();
+    }
 
-        Debug.Log(result);
-        resultText.text = result;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) // Example: Press R to output results
+        {
+            RefreshCharacters();
+            OutputResults();
+        }
+    }
+
+    private void RefreshCharacters()
+    {
+        characters = new List<Character>(FindObjectsOfType<Character>());
+    }
+
+    private void OutputResults()
+    {
+        foreach (Character character in characters)
+        {
+            float fitness = fitnessFunction.CalculateFitness(character);
+            Debug.Log($"Character {character.name} Fitness: {fitness}");
+        }
     }
 }

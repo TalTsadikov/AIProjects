@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public static class FitnessFunction 
+public class FitnessFunction : MonoBehaviour
 {
-    public static float EvaluateFitness(FuzzyLogic agent)
+    public float CalculateFitness(Character character)
     {
-        float survivalTime = Time.time;
-        float enemiesDefeated = agent.GetComponent<Character>().health;  // Could represent how well the agent survives.
-        return survivalTime + enemiesDefeated;  // Fitness based on survival and success.
+        float healthFactor = character.Health / 100.0f; // Normalized health
+        float survivalBonus = character.IsAlive ? 1.0f : 0.0f;
+
+        return healthFactor * 0.7f + survivalBonus * 0.3f; // Weighted fitness calculation
     }
 }

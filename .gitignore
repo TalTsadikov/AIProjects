@@ -37,3 +37,4 @@ sysinfo.txt
 # Ignore Unity's PackageCache
 Library/PackageCache/
 *.vsidx
+*.dwlt

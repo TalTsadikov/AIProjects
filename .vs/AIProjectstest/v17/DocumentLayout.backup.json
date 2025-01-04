@@ -3,24 +3,48 @@
   "WorkspaceRootPath": "C:\\unity projects\\AIProjectstest\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw2script\\agent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw2script\\agent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw3scripts\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw3scripts\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw2script\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw2script\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|c:\\unity projects\\aiprojectstest\\assets\\script\\hw3scripts\\proj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw3scripts\\proj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw2script\\gridsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw2script\\gridsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw3scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw3scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw2script\\pathfollower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw2script\\pathfollower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw3scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw3scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|c:\\unity projects\\aiprojectstest\\assets\\script\\hw2script\\pathfinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw2script\\pathfinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw3scripts\\resultsoutput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw3scripts\\resultsoutput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw3scripts\\healthpackspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw3scripts\\healthpackspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw3scripts\\healthpack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw3scripts\\healthpack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw3scripts\\geneticalgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw3scripts\\geneticalgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw3scripts\\fuzzylogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw3scripts\\fuzzylogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw3scripts\\fitnessfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw3scripts\\fitnessfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|C:\\unity projects\\AIProjectstest\\assets\\script\\hw3scripts\\characterparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E63A182-CE34-954B-D308-1DC7923F8227}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\hw3scripts\\characterparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +54,149 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PathFinding.cs",
-              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\PathFinding.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\HW2Script\\PathFinding.cs",
-              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\PathFinding.cs",
-              "RelativeToolTip": "Assets\\Script\\HW2Script\\PathFinding.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGYAAAArAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Proj.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\Proj.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW3Scripts\\Proj.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\Proj.cs",
+              "RelativeToolTip": "Assets\\Script\\HW3Scripts\\Proj.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwBsAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T12:38:47.449Z",
+              "WhenOpened": "2024-12-29T15:02:42.901Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PathFollower.cs",
-              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\PathFollower.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\HW2Script\\PathFollower.cs",
-              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\PathFollower.cs",
-              "RelativeToolTip": "Assets\\Script\\HW2Script\\PathFollower.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAowBcAAAAAAAAAAAAAAA==",
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW3Scripts\\PlayerMovement.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Script\\HW3Scripts\\PlayerMovement.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAUwEwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:19:22.091Z",
+              "WhenOpened": "2024-12-23T14:04:27.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ResultsOutput.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\ResultsOutput.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW3Scripts\\ResultsOutput.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\ResultsOutput.cs",
+              "RelativeToolTip": "Assets\\Script\\HW3Scripts\\ResultsOutput.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAYwCQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T13:44:58.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HealthPackSpawner.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\HealthPackSpawner.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW3Scripts\\HealthPackSpawner.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\HealthPackSpawner.cs",
+              "RelativeToolTip": "Assets\\Script\\HW3Scripts\\HealthPackSpawner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T13:44:58.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HealthPack.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\HealthPack.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW3Scripts\\HealthPack.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\HealthPack.cs",
+              "RelativeToolTip": "Assets\\Script\\HW3Scripts\\HealthPack.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T13:44:57.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GeneticAlgorithm.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\GeneticAlgorithm.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW3Scripts\\GeneticAlgorithm.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\GeneticAlgorithm.cs",
+              "RelativeToolTip": "Assets\\Script\\HW3Scripts\\GeneticAlgorithm.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAUwHgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T13:44:57.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FuzzyLogic.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\FuzzyLogic.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW3Scripts\\FuzzyLogic.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\FuzzyLogic.cs",
+              "RelativeToolTip": "Assets\\Script\\HW3Scripts\\FuzzyLogic.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAUwC8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T13:44:56.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FitnessFunction.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\FitnessFunction.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW3Scripts\\FitnessFunction.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\FitnessFunction.cs",
+              "RelativeToolTip": "Assets\\Script\\HW3Scripts\\FitnessFunction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T13:44:55.977Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GridSystem.cs",
-              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\GridSystem.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\HW2Script\\GridSystem.cs",
-              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\GridSystem.cs",
-              "RelativeToolTip": "Assets\\Script\\HW2Script\\GridSystem.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAmwDoAAAAxAAAAAAAAAA==",
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\Enemy.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW3Scripts\\Enemy.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\Enemy.cs",
+              "RelativeToolTip": "Assets\\Script\\HW3Scripts\\Enemy.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAswIQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:19:20.117Z",
+              "WhenOpened": "2024-12-23T13:44:55.448Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AIController.cs",
-              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\AIController.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\HW2Script\\AIController.cs",
-              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\AIController.cs",
-              "RelativeToolTip": "Assets\\Script\\HW2Script\\AIController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAowCAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "CharacterParameters.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\CharacterParameters.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW3Scripts\\CharacterParameters.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\CharacterParameters.cs",
+              "RelativeToolTip": "Assets\\Script\\HW3Scripts\\CharacterParameters.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:19:17.362Z",
+              "WhenOpened": "2024-12-23T13:44:54.729Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Agent.cs",
-              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\Agent.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\HW2Script\\Agent.cs",
-              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW2Script\\Agent.cs",
-              "RelativeToolTip": "Assets\\Script\\HW2Script\\Agent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAPAAAAAAAAAA==",
+              "Title": "Character.cs",
+              "DocumentMoniker": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\Character.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\HW3Scripts\\Character.cs",
+              "ToolTip": "C:\\unity projects\\AIProjectstest\\Assets\\Script\\HW3Scripts\\Character.cs",
+              "RelativeToolTip": "Assets\\Script\\HW3Scripts\\Character.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBMAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:18:11.964Z",
+              "WhenOpened": "2024-12-23T13:44:44.642Z",
               "EditorCaption": ""
             }
           ]

@@ -185,7 +185,7 @@ public class EnemyController : MonoBehaviour
             playerCharacter.TakeDamage(attackDamage);
         }
 
-        Projectile projectile = collision.gameObject.GetComponent<Projectile>();
+        ProjectileHW3 projectile = collision.gameObject.GetComponent<ProjectileHW3>();
         if (projectile != null)
         {
             TakeDamage(projectile.damage);

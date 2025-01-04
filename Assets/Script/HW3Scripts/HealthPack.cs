@@ -1,21 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthPack : MonoBehaviour
 {
-    public float healAmount = 30f;
+    public float healAmount = 20f;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        Character character = other.GetComponent<Character>();
+        if (character != null)
         {
-            Character player = other.GetComponent<Character>();
-            if (player != null && player.health < player.maxHealth)
-            {
-                player.Heal(healAmount);
-                Destroy(gameObject);  // Destroy health pack after use.
-            }
+            character.Heal(healAmount);
+            Destroy(gameObject);
         }
     }
 }
