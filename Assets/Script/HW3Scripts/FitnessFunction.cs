@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class FitnessFunction : MonoBehaviour
 {
-    public float CalculateFitness(Character character)
+    public float CalculateFitness(float survivalTime, float health)
     {
-        float healthFactor = character.Health / 100.0f; // Normalized health
-        float survivalBonus = character.IsAlive ? 1.0f : 0.0f;
+        float survivalTimeFactor = survivalTime / 30f; // Normalize by max survival time
+        float healthFactor = Mathf.Clamp01(health / 100f); // Normalize by max health
 
-        return healthFactor * 0.7f + survivalBonus * 0.3f; // Weighted fitness calculation
+        // Adjust weights if necessary
+        return (survivalTimeFactor * 0.7f) + (healthFactor * 0.3f);
     }
 }

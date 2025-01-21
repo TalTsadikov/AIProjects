@@ -1,133 +1,150 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(Character))]
 public class Enemy : MonoBehaviour
 {
+    public float detectionRange = 10f;
+    public float attackDamage = 20f;
+    public Transform firePoint; // The position from where projectiles will spawn
+    public GameObject projectilePrefab; // Assign this in the prefab
+    public float projectileSpeed = 15f; // Match player projectile speed
+    public List<Transform> patrolWaypoints; // Set patrol waypoints in the scene
+    private int currentWaypointIndex = 0;
+
+    public float patrolSpeed = 2f;
+    private NavMeshAgent navMeshAgent;
+
+    private GameObject targetPlayer;
     private FuzzyLogic fuzzyLogic;
-    private Character target; // Reference to the player (Character script)
-    private Character character; // Reference to this enemy's Character script
-
-    public float speed = 2.0f;
-    public float detectionRange = 15.0f;
-
-    public GameObject projectilePrefab; // Projectile to shoot
-    public Transform shootingPoint; // Where the projectile spawns
-    public float projectileSpeed = 10f;
-    public float shootingCooldown = 2f;
-
-    private float lastShotTime;
-
     private CharacterParameters parameters;
+    private float attackCooldown = 1.5f; // Cooldown between attacks
+    private float attackTimer = 0f;
 
     private void Start()
     {
-        character = GetComponent<Character>();
-        if (character == null)
-        {
-            Debug.LogError("Enemy is missing the Character component.");
-            return;
-        }
+        targetPlayer = GameObject.FindGameObjectWithTag("Player");
+        navMeshAgent = GetComponent<NavMeshAgent>();
 
-        // Find the player by tag
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
+        if (navMeshAgent != null)
         {
-            target = playerObject.GetComponent<Character>();
+            navMeshAgent.speed = patrolSpeed; // Set patrol speed
         }
+    }
 
-        if (target == null)
-        {
-            Debug.LogError("Player with 'Character' script not found. Make sure the player has the correct tag and script.");
-            return;
-        }
-
+    public void InitializeFuzzyLogic(CharacterParameters characterParameters)
+    {
+        parameters = characterParameters;
         fuzzyLogic = new FuzzyLogic();
-
-        // Initialize parameters for this enemy
-        parameters = new CharacterParameters
-        {
-            dangerThreshold = Random.Range(10f, 50f),
-            safeThreshold = Random.Range(50f, 100f),
-            decisionThreshold = Random.Range(0.3f, 0.7f)
-        };
-
-        // Pass dynamic thresholds to FuzzyLogic
-        fuzzyLogic.UpdateThresholds(parameters.dangerThreshold / 100f, detectionRange, parameters.safeThreshold);
+        fuzzyLogic.UpdateThresholds(
+            parameters.dangerThreshold / 100f,
+            detectionRange,
+            parameters.safeThreshold / 100f
+        );
     }
 
     private void Update()
     {
-        if (character == null || !character.IsAlive) return; // Ensure this enemy is alive
-        if (target == null || !target.IsAlive) return; // Ensure the target exists and is alive
+        attackTimer += Time.deltaTime;
 
-        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-
-        // Normalized values for self
-        float normalizedSelfHealth = Mathf.Clamp01(character.Health / character.MaxHealth);
-        float normalizedDistance = Mathf.Clamp01(distanceToTarget / detectionRange);
-
-        // Decide action using fuzzy logic
-        string action = fuzzyLogic.DecideAction(normalizedSelfHealth, normalizedDistance);
-
-        switch (action)
+        if (targetPlayer != null)
         {
-            case "Attack":
-                Attack();
-                break;
+            float distanceToPlayer = Vector3.Distance(transform.position, targetPlayer.transform.position);
+            float healthPercentage = GetComponent<Character>().currentHealth / GetComponent<Character>().maxHealth;
+            string decision = fuzzyLogic.DecideAction(distanceToPlayer, detectionRange, healthPercentage);
 
-            case "Retreat":
-                Retreat();
-                break;
-
-            case "Idle":
-                Idle();
-                break;
+            if (decision == "Attack" && attackTimer >= attackCooldown)
+            {
+                AttackPlayer();
+            }
+            else if (decision == "Search Health")
+            {
+                SearchForHealthPack();
+            }
+            else if (decision == "Patrol")
+            {
+                Patrol();
+            }
         }
     }
 
-    private void Attack()
+    private void Patrol()
     {
-        Debug.Log($"{this.name} is attacking!");
+        if (patrolWaypoints == null || patrolWaypoints.Count == 0 || navMeshAgent == null) return;
 
-        if (Time.time - lastShotTime > shootingCooldown)
+        if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
         {
-            ShootProjectile();
-            lastShotTime = Time.time;
+            currentWaypointIndex = (currentWaypointIndex + 1) % patrolWaypoints.Count;
+            navMeshAgent.SetDestination(patrolWaypoints[currentWaypointIndex].position);
         }
 
-        // Move slightly toward the target while shooting
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        navMeshAgent.isStopped = false; // Ensure the enemy moves during patrol
+    }
+
+    private void AttackPlayer()
+    {
+        if (navMeshAgent != null)
+        {
+            navMeshAgent.isStopped = true; // Stop movement when attacking
+        }
+
+        Debug.Log($"{this.name} attacking the player!");
+
+        // Rotate instantly to face the player
+        Vector3 lookDirection = targetPlayer.transform.position;
+        lookDirection.y = transform.position.y; // Keep rotation flat on the Y-axis
+        transform.LookAt(lookDirection);
+
+        ShootProjectile();
+        attackTimer = 0f; // Reset attack cooldown timer
+    }
+
+    private void SearchForHealthPack()
+    {
+        Debug.Log($"{this.name} searching for health pack!");
+
+        if (navMeshAgent != null)
+        {
+            navMeshAgent.isStopped = false; // Allow movement when searching for health packs
+
+            // Find the closest health pack and move toward it
+            GameObject[] healthPacks = GameObject.FindGameObjectsWithTag("HealthPack");
+            GameObject closestHealthPack = null;
+            float closestDistance = Mathf.Infinity;
+
+            foreach (GameObject healthPack in healthPacks)
+            {
+                float distance = Vector3.Distance(transform.position, healthPack.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestHealthPack = healthPack;
+                }
+            }
+
+            if (closestHealthPack != null)
+            {
+                navMeshAgent.SetDestination(closestHealthPack.transform.position);
+            }
+        }
     }
 
     private void ShootProjectile()
     {
-        if (projectilePrefab != null && shootingPoint != null)
+        if (projectilePrefab != null && firePoint != null)
         {
-            GameObject projectile = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity);
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.velocity = (target.transform.position - shootingPoint.position).normalized * projectileSpeed;
+                rb.velocity = transform.forward * projectileSpeed;
             }
 
-            // Initialize the projectile with reference to this enemy as the shooter
             Proj proj = projectile.GetComponent<Proj>();
             if (proj != null)
             {
                 proj.Initialize(gameObject);
             }
         }
-    }
-
-    private void Retreat()
-    {
-        Debug.Log($"{this.name} is retreating!");
-        Vector3 direction = transform.position - target.transform.position;
-        transform.position += direction.normalized * speed * Time.deltaTime;
-    }
-
-    private void Idle()
-    {
-        Debug.Log($"{this.name} is idling.");
     }
 }

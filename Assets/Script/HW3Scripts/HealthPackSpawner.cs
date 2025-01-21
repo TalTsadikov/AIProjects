@@ -3,21 +3,29 @@ using UnityEngine;
 public class HealthPackSpawner : MonoBehaviour
 {
     public GameObject healthPackPrefab;
-    public Vector3 spawnAreaSize;
-    public float spawnInterval = 5f;
+    public Transform[] spawnPoints;
+    public float spawnInterval = 10f;
+
+    private int maxActiveHealthPacks = 10; // Maximum number of health packs allowed in the scene
+    private int activeHealthPacks = 0;
 
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnHealthPack), spawnInterval, spawnInterval);
+        InvokeRepeating(nameof(SpawnHealthPack), 2f, spawnInterval);
     }
 
-    private void SpawnHealthPack()
+    void SpawnHealthPack()
     {
-        Vector3 randomPosition = new Vector3(
-            Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2),
-            0,
-            Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2));
+        if (activeHealthPacks >= maxActiveHealthPacks)
+            return;
 
-        Instantiate(healthPackPrefab, randomPosition, Quaternion.identity);
+        int index = Random.Range(0, spawnPoints.Length);
+        Instantiate(healthPackPrefab, spawnPoints[index].position, Quaternion.identity);
+        activeHealthPacks++;
+    }
+
+    public void OnHealthPackPickedUp()
+    {
+        activeHealthPacks = Mathf.Max(activeHealthPacks - 1, 0);
     }
 }

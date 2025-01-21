@@ -4,45 +4,32 @@ public class FuzzyLogic
 {
     private float dangerThreshold;
     private float safeThreshold;
-    private float decisionThreshold;
+    private float detectionRange;
 
-    public void UpdateThresholds(float danger, float detectionRange, float safe)
+    public void UpdateThresholds(float danger, float range, float safe)
     {
         dangerThreshold = danger;
+        detectionRange = range;
         safeThreshold = safe;
-        decisionThreshold = 0.5f; // Default balanced decision threshold
     }
 
-    public string DecideAction(float normalizedSelfHealth, float normalizedDistance)
+    public string DecideAction(float distance, float detectionRange,float healthPercentage)
     {
-        // Calculate fuzzy values for self (health)
-        float lowHealth = Mathf.Clamp01((dangerThreshold - normalizedSelfHealth) / dangerThreshold);
-        float highHealth = 1.0f - lowHealth;
+        if (healthPercentage <= 0.3f) // Low health
+        {
+            return "Search Health";
+        }
 
-        // Calculate fuzzy values for distance
-        float farFromTarget = Mathf.Clamp01(normalizedDistance);
-        float nearToTarget = 1.0f - farFromTarget;
-
-        // Adjust weights for actions
-        float attackWeight = highHealth * nearToTarget; // Attack when strong and close
-        float retreatWeight = lowHealth; // Retreat only based on low health, distance removed
-        float idleWeight = (highHealth * farFromTarget); // Idle when healthy but far from target
-
-        // Debugging for weights
-        // Debug.Log($"Attack: {attackWeight}, Retreat: {retreatWeight}, Idle: {idleWeight}");
-
-        // Determine action with the highest weight
-        if (attackWeight >= retreatWeight && attackWeight >= idleWeight)
+        if (distance < detectionRange && healthPercentage > 0.3f) // Close to the player OR healthy enough
         {
             return "Attack";
         }
-        else if (retreatWeight >= attackWeight && retreatWeight >= idleWeight)
+
+        if (distance > safeThreshold) // Player is far away
         {
-            return "Retreat";
+            return "Patrol";
         }
-        else
-        {
-            return "Idle";
-        }
+
+        return "Hold Position"; // Default behavior if no other condition is met
     }
 }

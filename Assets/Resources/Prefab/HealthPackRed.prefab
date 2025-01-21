@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1797124486321452767}
   m_Layer: 2
   m_Name: HealthPackRed
-  m_TagString: Untagged
+  m_TagString: HealthPack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac6012111abf2a4bbbb82a34b1be20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthAmount: 25
+  minHealthAmount: 15
+  maxHealthAmount: 30
 --- !u!33 &1829716582279109263
 MeshFilter:
   m_ObjectHideFlags: 0

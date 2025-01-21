@@ -10,10 +10,13 @@ public class PlayerMovement : MonoBehaviour
     public Transform shootingPoint; // Where the projectile spawns
     public float projectileSpeed = 15f;
 
+    private Camera mainCamera;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation; // Prevent unwanted rotation
+        mainCamera = Camera.main;
     }
 
     private void Update()
@@ -43,15 +46,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void RotatePlayerToMouse()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-
-        if (groundPlane.Raycast(ray, out float rayDistance))
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity))
         {
-            Vector3 point = ray.GetPoint(rayDistance);
-            Vector3 direction = (point - transform.position).normalized;
-            direction.y = 0; // Keep the rotation only on the XZ plane
-            transform.rotation = Quaternion.LookRotation(direction);
+            Vector3 lookDirection = hitInfo.point - transform.position;
+            lookDirection.y = 0; // Ignore Y-axis for rotation
+            transform.rotation = Quaternion.LookRotation(lookDirection);
         }
     }
 
@@ -63,14 +63,13 @@ public class PlayerMovement : MonoBehaviour
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.velocity = shootingPoint.forward * projectileSpeed; // Launch the projectile forward
+                rb.velocity = transform.forward * projectileSpeed;
             }
 
-            // Initialize the projectile and assign the shooter (player)
             Proj proj = projectile.GetComponent<Proj>();
             if (proj != null)
             {
-                proj.Initialize(gameObject); // Pass the player as the shooter
+                proj.Initialize(gameObject);
             }
         }
     }

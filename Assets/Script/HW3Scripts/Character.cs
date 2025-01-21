@@ -2,28 +2,58 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public float MaxHealth = 100f;
-    public float Health;
-    public bool IsAlive => Health > 0;
+    public float maxHealth = 100f;
+    public float currentHealth;
+    public float survivalTime { get; private set; }
+    public float maxSurvivalTime = 300f;
+    public bool IsAlive => currentHealth > 0;
+
+    // Delegate and event for continuous stats updates
+    public delegate void StatsUpdatedHandler(float survivalTime, float health);
+    public event StatsUpdatedHandler OnStatsUpdated;
 
     private void Start()
     {
-        Health = MaxHealth;
+        currentHealth = maxHealth;
+        survivalTime = 0f;
     }
 
-    public void TakeDamage(float damage)
+    public void AddHealth(float amount)
     {
-        Health -= damage;
-        if (Health <= 0)
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        TriggerStatsUpdated();
+    }
+
+    public void TakeDamage(float amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+        TriggerStatsUpdated();
+
+        if (currentHealth <= 0)
         {
-            Health = 0;
-            Destroy(gameObject);
+            Die();
         }
     }
 
-    public void Heal(float amount)
+    private void Die()
     {
-        Health += amount;
-        if (Health > MaxHealth) Health = MaxHealth;
+        Debug.Log(gameObject.name + " has died!");
+        TriggerStatsUpdated(); // Ensure the final stats are updated
+        Destroy(gameObject);
+    }
+
+    private void Update()
+    {
+        if (IsAlive)
+        {
+            survivalTime += Time.deltaTime;
+            TriggerStatsUpdated();
+        }
+    }
+
+    // Method to trigger the stats update event
+    private void TriggerStatsUpdated()
+    {
+        OnStatsUpdated?.Invoke(survivalTime, currentHealth);
     }
 }
