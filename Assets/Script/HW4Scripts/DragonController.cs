@@ -1,36 +1,31 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 public class DragonController : MonoBehaviour
 {
-    public NeuralNetwork network;  // The neural network controlling the dragon
-    public Transform target;       // The target the dragon will fly towards
+    public NeuralNetwork network;
+    public Transform target;
     public float speed = 10f;
-    public float obstacleAvoidanceDistance = 10f;  // Distance to start avoiding obstacles
-    public float maxAltitude = 50f;                // Maximum allowed altitude before descending
-    public float minAltitude = 5f;                 // Minimum allowed altitude before ascending
+    public float obstacleAvoidanceDistance = 10f;
+    public float maxAltitude = 50f;
+    public float minAltitude = 5f;
+    public float maxVelocity = 15f;
+    public float maxAngularVelocity = 5f;
+    public float angularDrag = 2f;
 
     private Rigidbody rb;
-    private List<NeuralNetwork> topNetworks = new List<NeuralNetwork>();  // To store top 10 networks
-    
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.angularDrag = angularDrag;
 
-        // Ensure the dragon spawns at world position (0, 0, 0)
-        transform.position = Vector3.zero;
-
-        // Initialize the neural network if not assigned
         if (network == null)
         {
             network = new NeuralNetwork();
             Debug.LogWarning("Neural network was not assigned, initializing a new one.");
         }
 
-        // Validate if the target is assigned
         if (target == null)
         {
             Debug.LogError("Target is not assigned.");
@@ -42,16 +37,16 @@ public class DragonController : MonoBehaviour
         FlyTowardsTarget();
         HandleObstacleAvoidance();
         HandleAltitudeAdjustment();
+        ClampVelocity();
     }
 
-    public void FlyTowardsTarget()
+    private void FlyTowardsTarget()
     {
         if (network == null || target == null)
         {
-            return; 
+            return;
         }
 
-        // Move the dragon towards the target
         Vector3 direction = (target.position - transform.position).normalized;
         rb.velocity = direction * speed;
 
@@ -62,32 +57,32 @@ public class DragonController : MonoBehaviour
             target.position.x, target.position.y
         };
 
-        // Get network output (assuming 8 inputs and 4 outputs)
         float[] output = network.FeedForward(inputs);
 
-        // Simulate wing flaps and tail movements based on neural network output
-        float leftWingFlap = output[0];
-        float rightWingFlap = output[1];
-        float horizontalTail = output[2];
-        float verticalTail = output[3];
+        float leftWingFlap = Mathf.Clamp(output[0], -1f, 1f);
+        float rightWingFlap = Mathf.Clamp(output[1], -1f, 1f);
+        float horizontalTail = Mathf.Clamp(output[2], -1f, 1f);
+        float verticalTail = Mathf.Clamp(output[3], -1f, 1f);
 
-        // Apply forces and torques based on network output
-        rb.AddForce(Vector3.up * (leftWingFlap + rightWingFlap) * 10);  // Wing flap control
-        rb.AddTorque(Vector3.right * verticalTail);  // Pitch control
-        rb.AddTorque(Vector3.up * horizontalTail);   // Yaw control
+        rb.AddForce(Vector3.up * (leftWingFlap + rightWingFlap) * 10);
+        rb.AddTorque(Vector3.right * verticalTail);
+        rb.AddTorque(Vector3.up * horizontalTail);
     }
-
 
     private void HandleObstacleAvoidance()
     {
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward, Color.blue);
         if (Physics.Raycast(transform.position, transform.forward, out hit, obstacleAvoidanceDistance))
         {
-            // If obstacle detected, steer around it
-            Vector3 avoidDirection = Vector3.Cross(hit.normal, Vector3.up);  // Simple avoidance by changing direction
-            rb.velocity = avoidDirection * speed;
-            Debug.Log("Avoiding obstacle.");
+            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
+
+            Vector3 avoidDirection = Vector3.Cross(hit.normal, Vector3.up).normalized;
+            Vector3 newDirection = Vector3.Lerp(rb.velocity.normalized, avoidDirection, 0.1f);
+            rb.velocity = newDirection * speed;
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.forward * obstacleAvoidanceDistance, Color.green);
         }
     }
 
@@ -95,61 +90,27 @@ public class DragonController : MonoBehaviour
     {
         if (transform.position.y > maxAltitude)
         {
-            rb.velocity += Vector3.down * speed * 0.5f;  // Fly down if too high
-            Debug.Log("Descending due to high altitude.");
+            rb.velocity += Vector3.down * speed * 0.5f;
         }
         else if (transform.position.y < minAltitude)
         {
-            rb.velocity += Vector3.up * speed * 0.5f;  // Fly up if too low
-            Debug.Log("Ascending due to low altitude.");
+            rb.velocity += Vector3.up * speed * 0.5f;
         }
     }
 
-    public void SaveTopNetworks(string path)
+    private void ClampVelocity()
     {
-        EnsureSaveDirectoryExists();
-
-        BinaryFormatter formatter = new BinaryFormatter();
-        using (FileStream stream = new FileStream(path, FileMode.Create))
-        {
-            formatter.Serialize(stream, topNetworks);  
-        }
-
-        Debug.Log("Top neural networks saved to " + path);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxVelocity);
+        rb.angularVelocity = Vector3.ClampMagnitude(rb.angularVelocity, maxAngularVelocity);
     }
 
-
-    public void LoadTopNetworks(string path)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (File.Exists(path))
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(path, FileMode.Open))
-            {
-                topNetworks = (List<NeuralNetwork>)formatter.Deserialize(stream);
-            }
-
-            Debug.Log("Top neural networks loaded from " + path);
-        }
-        else
-        {
-            Debug.LogError("No saved neural networks found at " + path);
-        }
-    }
-
-    public void ConfigureEvolutionSettings(int populationSize, float mutationRate, int generations)
-    {
-        
-        Debug.Log($"Configuring evolution with Population Size: {populationSize}, Mutation Rate: {mutationRate}, Generations: {generations}");
-     
-    }
-
-    private void EnsureSaveDirectoryExists()
-    {
-        string savePath = "Assets/SaveData/";
-        if (!Directory.Exists(savePath))
-        {
-            Directory.CreateDirectory(savePath);
+            rb.angularVelocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
+            transform.rotation = Quaternion.identity;
         }
     }
 }

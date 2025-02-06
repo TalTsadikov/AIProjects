@@ -2390,7 +2390,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  rb: {fileID: 890009594851584730}
+  speed: 10
+  obstacleAvoidanceDistance: 10
+  maxAltitude: 50
+  minAltitude: 5
+  maxVelocity: 15
+  maxAngularVelocity: 5
+  angularDrag: 2
 --- !u!1 &6442276267340232790
 GameObject:
   m_ObjectHideFlags: 0
